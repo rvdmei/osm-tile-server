@@ -1,8 +1,14 @@
 version: '2'
 services:
-  web:
-    image: klokantech/tileserver-mapnik:v2.0
+  tileserver:
+    image: klokantech/tileserver-gl:v1.1.5
     ports:
       - "8080:80"
     volumes:
-      - ./data/:/data/:ro
+      - ./tileserver-gl/:/data/:ro
+  webserver:
+    image: kpn/php-base:0.1
+    ports:
+      - "80:80"
+    volumes:
+      - ./web-server/:/var/www/html/
